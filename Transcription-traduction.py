@@ -1,13 +1,14 @@
-# -*-coding:UTF-8 -* --------------------------------------- Script de transcription/traduction
-# --------------------------------------- Version actuelle : 1.1 (27 janvier 2013) Auteur : Raphaël Facchini (
-# Université de Mons (Belgique) - 1ère Master Biochimie, biologie moléculaire et cellulaire {orientation
-# Biochimie/Microbiologie}) Mail de contact : raphael-facchini[at]outlook.com -------------------------------
-# ----------------------- Description ----------------------- Ce script en Python vous permet, sur base d'une
+# --------------------------------------- Script de transcription/traduction
+# --------------------------------------- Version actuelle : 1.1 (27 janvier 2013) -------------------------------
+# ----------------------- Description ----------------------- 
+# Ce script en Python vous permet, sur base d'une
 # séquence d'ADN ou d'ARN, d'obtenir (par transcription/rétrotranscription suivant les données saisies) l'ARN/ADN
 # correspondant. Sur base d'une molécule d'ARN (supposé mature), il est également possible d'obtenir la séquence
 # protéique correspondante (exportée sous format FASTA). Le script ne prend pas en compte un quelconque épissage lors
-# de la transcription, ainsi qu'au niveau des modifications post-transcriptionnelles. -------------------------------
-# ----------------------- Notes de version ----------------------- {1.1} - Optimisation de librarybioperso.CodontoAA
+# de la transcription, ainsi qu'au niveau des modifications post-transcriptionnelles. 
+# -------------------------------
+# ----------------------- Notes de version ----------------------- 
+# {1.1} - Optimisation de library.CodontoAA
 # : simplification du code et modification en vue de l'exportation .txt - Exportation de la séquence traduite
 # d'acides aminés dans le fichier "sequence-proteique.txt" (emplacement : dossier contenant le script .py),
 # format FASTA
@@ -16,11 +17,11 @@
 # - Formatage de l'input : retrait des retours à la ligne
 #
 # {1.02}
-# - Addition d'un petit script de vérification de séquences (pour comparer une séquence théorique avec la séquence traduite par le script) : librarybioperso.comparaisonsequences
+# - Addition d'un petit script de vérification de séquences (pour comparer une séquence théorique avec la séquence traduite par le script) : library.comparaisonsequences
 # - Menu de sélection
 #
 # {1.01}
-# - Simplification du script : création du package librarybioperso et de la fonction librarybioperso.CodontoAA
+# - Simplification du script : création du package library et de la fonction library.CodontoAA
 #
 # {1.0}
 # - Création du script original
@@ -33,7 +34,7 @@
 # * Lancer une comparaison de séquence protéique via Standard Protein BLAST (http://blast.ncbi.nlm.nih.gov) ou via BLAST+ (http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 #-----------------------------------------------------------------
 
-import librarybioperso
+import library
 
 code = input("Introduisez votre séquence : ")
 code = code.upper()
@@ -89,10 +90,10 @@ if choixARN == '2' or choixADN == '2' :
     i = 0
     j = 0
     while i < (len(code)-2) and j < nbcodon :
-        codon = librarybioperso.CodontoAA(code[i:i+3])
-        from librarybioperso import X
-        print(str(librarybioperso.X), end='')
-        seq[j] = librarybioperso.X
+        codon = library.CodontoAA(code[i:i+3])
+        from library import X
+        print(str(library.X), end='')
+        seq[j] = library.X
         i+=3
         j+=1
         
@@ -113,6 +114,6 @@ choixcomp = input("Souhaitez-vous comparer deux séquences ? Si oui, tapez 1, si
 if choixcomp =='1':  
     sequencetheo = input("Entrez la séquence référence théorique :")
     sequenceobs = input("Entra la séquence obtenue par le programme :")
-    comparaison = librarybioperso.comparaisonsequences(sequencetheo,sequenceobs)
+    comparaison = library.comparaisonsequences(sequencetheo,sequenceobs)
 else:
     print("")
