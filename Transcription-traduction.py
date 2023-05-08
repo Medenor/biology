@@ -8,7 +8,7 @@
 # de la transcription, ainsi qu'au niveau des modifications post-transcriptionnelles. 
 # -------------------------------
 # ----------------------- Notes de version ----------------------- 
-# {1.1} - Optimisation de library.CodontoAA
+# {1.1} - Optimisation de librarybioperso.CodontoAA
 # : simplification du code et modification en vue de l'exportation .txt - Exportation de la séquence traduite
 # d'acides aminés dans le fichier "sequence-proteique.txt" (emplacement : dossier contenant le script .py),
 # format FASTA
@@ -17,11 +17,11 @@
 # - Formatage de l'input : retrait des retours à la ligne
 #
 # {1.02}
-# - Addition d'un petit script de vérification de séquences (pour comparer une séquence théorique avec la séquence traduite par le script) : library.comparaisonsequences
+# - Addition d'un petit script de vérification de séquences (pour comparer une séquence théorique avec la séquence traduite par le script) : librarybioperso.comparaisonsequences
 # - Menu de sélection
 #
 # {1.01}
-# - Simplification du script : création du package library et de la fonction library.CodontoAA
+# - Simplification du script : création du package librarybioperso et de la fonction librarybioperso.CodontoAA
 #
 # {1.0}
 # - Création du script original
@@ -34,7 +34,7 @@
 # * Lancer une comparaison de séquence protéique via Standard Protein BLAST (http://blast.ncbi.nlm.nih.gov) ou via BLAST+ (http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 #-----------------------------------------------------------------
 
-import library
+import librarybioperso
 
 code = input("Introduisez votre séquence : ")
 code = code.upper()
@@ -90,10 +90,9 @@ if choixARN == '2' or choixADN == '2' :
     i = 0
     j = 0
     while i < (len(code)-2) and j < nbcodon :
-        codon = library.CodontoAA(code[i:i+3])
-        from library import X
-        print(str(library.X), end='')
-        seq[j] = library.X
+        codon = librarybioperso.CodontoAA(code[i:i+3])
+        print(str(librarybioperso.X), end='')
+        seq[j] = librarybioperso.X
         i+=3
         j+=1
         
@@ -114,6 +113,6 @@ choixcomp = input("Souhaitez-vous comparer deux séquences ? Si oui, tapez 1, si
 if choixcomp =='1':  
     sequencetheo = input("Entrez la séquence référence théorique :")
     sequenceobs = input("Entra la séquence obtenue par le programme :")
-    comparaison = library.comparaisonsequences(sequencetheo,sequenceobs)
+    comparaison = librarybioperso.comparaisonsequences(sequencetheo,sequenceobs)
 else:
     print("")
