@@ -3,8 +3,6 @@
 # Classification phénotypique d'organismes bactériens
 #---------------------------------------
 # Version actuelle : 1.0
-# Auteur : Raphaël Facchini (Université de Mons (Belgique) - 1ère Master Biochimie, biologie moléculaire et cellulaire {orientation Biochimie/Microbiologie})
-# Mail de contact : raphael-facchini[at]outlook.com
 #-------------------------------
 #-----------------------
 # Description 
