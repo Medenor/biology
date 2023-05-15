@@ -34,12 +34,9 @@
 # * Lancer une comparaison de séquence protéique via Standard Protein BLAST (http://blast.ncbi.nlm.nih.gov) ou via BLAST+ (http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 #-----------------------------------------------------------------
 
-import librarybioperso
-
+# séquence test : AUGAACUUCGCAGGAUGAUGA -> MNFAG STOP STOP
 code = input("Introduisez votre séquence : ")
-code = code.upper()
-code = code.replace("\r","")
-code = code.replace("\n","")
+code = code.upper().strip()
 for lettre in code:
     if lettre in "U":
         ADN = False
@@ -83,19 +80,18 @@ else:
 ## ---------------
 #Détermination de la structure protéique primaire de la séquence introduite
 if choixARN == '2' or choixADN == '2' : 
-    nbcodon = len(code) / 3
-    seq = [None]*int(nbcodon)
-    print("La séquence entrée est composée de ",nbcodon,"codons")
+    from librarybioperso import CodontoAA
+    nbcodon = int(len(code) // 3)
+    seq = []
+    print("La séquence entrée est composée de",nbcodon,"codons")
     print("La structure primaire de la protéine associée est : ")
-    i = 0
-    j = 0
-    while i < (len(code)-2) and j < nbcodon :
-        codon = librarybioperso.CodontoAA(code[i:i+3])
-        print(str(librarybioperso.X), end='')
-        seq[j] = librarybioperso.X
-        i+=3
-        j+=1
-        
+    for i in range(0, len(code), 3):
+        codon = code[i:i+3]
+        if len(codon) == 3:
+            aa = CodontoAA(codon)
+            seq.append(aa)
+    print(seq)
+
 else :
     print("")
 
@@ -111,8 +107,10 @@ save_file.close()
 print("\n")
 choixcomp = input("Souhaitez-vous comparer deux séquences ? Si oui, tapez 1, sinon tapez 2.")
 if choixcomp =='1':  
-    sequencetheo = input("Entrez la séquence référence théorique :")
-    sequenceobs = input("Entra la séquence obtenue par le programme :")
-    comparaison = librarybioperso.comparaisonsequences(sequencetheo,sequenceobs)
+    from librarybioperso import compare_sequences
+    expected_sequence = input("Entrez la séquence référence théorique :")
+    observed_sequence = input("Entra la séquence obtenue par le programme :")
+    comparaison = compare_sequences(expected_sequence,observed_sequence)
+    print(comparaison)
 else:
     print("")

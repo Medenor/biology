@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, 'C:/Users/Admin/Desktop/biopython-1.60/build/py3.3/Bio/Blast/')
 import NCBIWWW
 
-my_sequence = input("Entre la séquence à BLASTer :")
+my_sequence = input("En+tre la séquence à BLASTer :")
 print("Recherche en cours de",my_sequence)
 result = NCBIWWW.qblast("blastp", "nr", my_sequence, format_type="Text")
 print (result.read())
