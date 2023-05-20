@@ -10,7 +10,7 @@
 
 # Ask for initial sequence, set nature booleans and identify input's nature
 initial_sequence = input("Input the sequence to manipulate: ")
-from librarybioperso import sequence_cleanup, initiate, sequence_identification
+from central_dogma_module import sequence_cleanup, initiate, sequence_identification
 initiate()
 cleaned_sequence = sequence_cleanup(initial_sequence)
 sequence_identification(cleaned_sequence)
@@ -23,21 +23,13 @@ print("""Current operations available to apply on sequence are:
 
 choice = input("Type operation's number to apply, without brackets: ")
 if choice == '1':
-    from librarybioperso import transcription
+    from central_dogma_module import transcription
     transcription(cleaned_sequence)
 elif choice == "2":
-    from librarybioperso import translation
+    from central_dogma_module import translation
     translation(cleaned_sequence)
 elif choice == '3':
-    from librarybioperso import retrotranscription
+    from central_dogma_module import retrotranscription
     retrotranscription(cleaned_sequence)
 else:
     raise ValueError("Your choice is unvalid.")
-
-
-# save_file = open("sequence-proteique.txt", "w") # Dans répertoire contenant le script
-# save_file.write("> Proteic sample. \n")
-# i = 0
-# for i in seq:
-#     save_file.write(str(i))
-# save_file.close()

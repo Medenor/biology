@@ -41,6 +41,9 @@ def translation(seq):
             raise ValueError("Invalid codon")
     str_transcribed_seq = ''.join(transcribed_seq) #FASTA conversion
     print(str_transcribed_seq)
+    save_file = open("test.fasta", "w") # within same directory as main.py and current module
+    save_file.write(str_transcribed_seq)
+    save_file.close()
 
 
 def compare_sequences(seq1, seq2):
