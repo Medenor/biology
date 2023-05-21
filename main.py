@@ -8,7 +8,7 @@
 # Test sequence : ATGGCTTCAAGTCCGCACTACGAATGGCAGCTTGAGGCTCCAGGTCGG -> AUGGCUUCAAGUCCGCACUACGAAUGGCAGCUUGAGGCUCCAGGUCGG -> MASSPHYEWQLEAPGR
 # Test sequence for BLAST: gcgagcagcccgccgtatgaatggcagcaggaagcggtggaaccgggc -> ASSPPYEWQQEAVEPG -> https://www.ncbi.nlm.nih.gov/protein/WP_276301433.1?report=genbank&log$=protalign&blast_rank=1&RID=6HYUP7D5013 (ubiquinol-cytochrome c reductase iron-sulfur subunit [Halorussus)
 
-# Ask for initial sequence, set nature booleans and identify input's nature
+# Ask for initial sequence, set nature booleans and identify input's nature after cleanup
 initial_sequence = input("Input the sequence to manipulate: ")
 from central_dogma_module import sequence_cleanup, initiate, sequence_identification
 initiate()
