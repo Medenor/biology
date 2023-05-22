@@ -2,7 +2,7 @@
 # To do list
 #-----------------------
 # * Only start translation on Codon start AUG, and stop on Codon stop UAA,UGA,UAG
-# * BLAST protein sequence using blastpy3: https://pypi.org/project/blastpy3/
+# * BLAST protein sequence using Biopython
 #-----------------------------------------------------------------
 
 # Test sequence : ATGGCTTCAAGTCCGCACTACGAATGGCAGCTTGAGGCTCCAGGTCGG -> AUGGCUUCAAGUCCGCACUACGAAUGGCAGCUUGAGGCUCCAGGUCGG -> MASSPHYEWQLEAPGR

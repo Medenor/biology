@@ -10,7 +10,7 @@ def sequence_cleanup(seq):
     return seq
 
 def translation(seq):
-    seq = seq.replace("T","U") #Quick, by-default transcription to always work with RNA sequence
+    seq = seq.replace("T","U") #Quick, by-default transcription to always apply function on RNA sequence
     seq_lenght = len(seq)
     codon_total = seq_lenght // 3
     print("Total number of codons in sequence is",codon_total)
